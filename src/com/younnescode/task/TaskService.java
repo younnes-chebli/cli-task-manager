@@ -1,11 +1,12 @@
-package com.younnescode.myutils;
-
-import com.younnescode.task.Task;
+package com.younnescode.task;
 
 import java.util.ArrayList;
+public class TaskService {
+    public static boolean isOutOfBounds(ArrayList<Task> tasks, int index) {
+        return index < 0 || getById(tasks, index) == null;
+    }
 
-public class MyUtils {
-    public static boolean taskExists(ArrayList<Task> tasks, int index) {
+    public static boolean exists(ArrayList<Task> tasks, int index) {
         return getById(tasks, index) != null;
     }
 
@@ -19,9 +20,5 @@ public class MyUtils {
         }
 
         return task;
-    }
-
-    public static boolean outOfBounds(ArrayList<Task> tasks, int index) {
-        return index < 0 || getById(tasks, index) == null;
     }
 }

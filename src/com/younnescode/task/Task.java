@@ -1,11 +1,13 @@
 package com.younnescode.task;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Task {
     private int id;
     private String description;
     private boolean done;
+    private static final TaskService taskService = new TaskService();
 
     public Task(int id, String name) {
         this.id = id;
@@ -27,6 +29,18 @@ public class Task {
 
     public void setDone() {
         this.done = true;
+    }
+
+    public static boolean isOutOfBounds(ArrayList<Task> tasks, int index) {
+        return taskService.isOutOfBounds(tasks, index);
+    }
+
+    public static boolean exists(ArrayList<Task> tasks, int index) {
+        return taskService.exists(tasks, index);
+    }
+
+    public static Task getById(ArrayList<Task> tasks, int id) {
+        return taskService.getById(tasks, id);
     }
 
     @Override

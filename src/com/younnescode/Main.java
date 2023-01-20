@@ -1,7 +1,6 @@
 package com.younnescode;
 
 import com.younnescode.task.Task;
-import com.younnescode.myutils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -72,7 +71,7 @@ public class Main {
             int option = scan.nextInt();
             if(option == 0) {
                 showMainMenu();
-            } else if(MyUtils.outOfBounds(tasks, option)) {
+            } else if(Task.isOutOfBounds(tasks, option)) {
                 deleteTask();
             } else {
                 tasks.removeIf(task -> (task.getId() == option));
@@ -91,12 +90,12 @@ public class Main {
             int option = scan.nextInt();
             if(option == 0) {
                 showMainMenu();
-            } else if(MyUtils.outOfBounds(tasks, option) || !MyUtils.taskExists(tasks, option)) {
+            } else if(Task.isOutOfBounds(tasks, option) || !Task.exists(tasks, option)) {
                 markTaskDone();
-            } else if(MyUtils.taskExists(tasks, option) && MyUtils.getById(tasks, option).isDone()) {
+            } else if(Task.exists(tasks, option) && Task.getById(tasks, option).isDone()) {
                 markTaskDone();
             } else {
-                MyUtils.getById(tasks, option).setDone();
+                Task.getById(tasks, option).setDone();
                 markTaskDone();
             }
         }
@@ -117,7 +116,7 @@ public class Main {
             int option = scan.nextInt();
             if(option == 0) {
                 showMainMenu();
-            } else if(MyUtils.outOfBounds(tasks, option) || !MyUtils.taskExists(tasks, option)) {
+            } else if(Task.isOutOfBounds(tasks, option) || !Task.exists(tasks, option)) {
                 updateTask();
             } else {
                 System.out.println("Give a new description for your task " + "(Cancel [0])");
@@ -126,7 +125,7 @@ public class Main {
                 if(description.equals("0")) {
                     updateTask();
                 } else {
-                    MyUtils.getById(tasks, option).setDescription(description);
+                    Task.getById(tasks, option).setDescription(description);
                     updateTask();
                 }
             }
