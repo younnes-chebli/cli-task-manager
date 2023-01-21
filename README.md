@@ -1,4 +1,4 @@
-# Java CLI Task Manager Project
+# CLI Task Manager Project
 
 Task Manager nested to the terminal. It takes user input and reacts accordingly (except of course if we select to exit the program).
 
